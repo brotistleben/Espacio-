@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    font-family: 'Bebas Neue', cursive;
+    background-color: #0e0e1a;
+    
+}
+
+.conteiner{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.header{
+    background-image: linear-gradient(
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.7)
+    ),
+    url(imagenes/bg.jpg);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    }
+
+    .menu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo{
+        font-size: 35px;
+        color: #F1ECDC;
+        font-weight: 800;
+    }
+
+    .menu .navbar ul li  {
+        position: relative;
+        float: left;
+    }
+
+    .menu .navbar ul li a {
+        font-size: 22px;
+        padding: 20px;
+        color: #f1ecdc;
+        display: block;
+
+    }
+    
+    .menu .navbar ul li a:hover {
+        color: #fedab6;
+    }
+
+    #menu {
+        display: ""; 
+
+    }
+    
+    .menu-icono {
+        width:25px ;
+    }
+
+    .menu label {
+        cursor: pointer;
+        display: none;
+    }
+
+    .header-contect {
+        text-align: center;
+    }
+    
+    .header-txt span {
+        font-size: 30px;
+        color: #f1ecdc;
+    }
+
+    .header-txt h1 {
+        font-size: 120px;
+        line-height: 120px;
+        color: #f1ecdc;
+    }
+
+    .price {
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #44444c;
+
+    }
+
+    .price-1 {
+        height: 100px;
+        width: 300px ;
+        border-right: 1px solid #44444c;
+
+    }
+
+    .price-1:last-child {
+        border: 0;
+    }
+
+    .price-1 p {
+        color: #fff9ed;
+        font-size: 20px;
+
+    }
+
+    .price-1 h3 {
+        color: #fff9ed;
+        font-size: 30px;
+
+    }
+
+    .adventur {
+        padding: 100px 0;
+        text-align:center ; 
+
+
+    }
+
+    span {
+        color: #fedab6;
+        font-size: 30px;
+    }
+
+    h2 {
+        color: #fedab6;
+        font-size: 70px;
+        line-height: 70px;
+        margin-bottom: 35px;
+    }
+
+    .adventur-content {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 120px;
+
+
+    }
+
+    .adventur-1 {
+        padding: 25px 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .adventur-1 img {
+        width: 170px;
+        margin: -120px 0 75px 0;
+
+    }
+
+    .adventur-1 h3 {
+        color: #fff9ed;
+        font-size: 40px;
+        line-height: 45px;
+        margin-bottom: 150px;
+    }
+
+    .bg-1 {
+        background-image: url(imagenes/i1.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 28%;
+        height: 400px;
+    }
+
+    .bg-2 {
+        background-image: url(imagenes/i2.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 28%;
+        height: 400px;
+    }
+
+    .bg-3 {
+        background-image: url(imagenes/i3.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 28%;
+        height: 400px;
+    }
+

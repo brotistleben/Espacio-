@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adivina la Capital</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url(imagenes/bg.jpg) repeat;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .feedback {
+            font-size: 24px;
+        }
+
+        .checkmark {
+            color: green;
+            display: none;
+        }
+
+        .error {
+            color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Explorando la galaxia</h1>
+    <div class="container">
+        <p id="question" style="font-size:38px;"></p></p>
+        <input type="text" id="respuestaInput" onkeydown="verificarConEnter(event)">
+        <button onclick="verificarRespuesta()">Verificar</button>
+        <p class="feedback checkmark">&#10004;</p>
+        <p class="feedback error">&#10060;</p>
+    </div>
+
+    <script>
+        const preguntas = [
+        { pregunta: '¿A que distancia esta sol  de la tierra?', respuesta: '8.3 minutos luz' },
+            { pregunta: '¿Cuantos planetas tiene el sistema solar?', respuesta: '8' },
+            { pregunta: '¿Pluton es un planeta?', respuesta: 'No' },
+            { pregunta: '¿Cuál es el planeta mas grande del sistema solar?', respuesta: 'Jupiter' },
+            { pregunta: '¿Cuál fue el primer hombre en llegar a la luna?', respuesta: 'Neil Alden Armstrong' },
+            { pregunta: '¿Contra que pais se estaba haciendo EE.UU la carrera espacial en 1969?', respuesta: 'URRS' },
+            { pregunta: '¿Cuantos planetas ha visitado los artfactos humanos?', respuesta: '5' },
+            { pregunta: '¿Cuál fue el cohete que llevo al hombre a la luna?', respuesta: 'Apolo 11' },
+            { pregunta: '¿Cuál es el planeta mas alejado del sol?', respuesta: 'Neptuno' },
+            { pregunta: '¿Que es una Nevulosa?', respuesta: 'Materia cosmica' },
+        ];
+
+
+        let preguntaActual = 0;
+        let respuestasCorrectas = 0;
+        let respuestasIncorrectas = 0;
+        let erroresConsecutivos = 0;
+        const maxErroresConsecutivos = 2;
+
+        function verificarConEnter(event) {
+            if (event.key === "Enter") {
+                verificarRespuesta();
+            }
+        }
+
+        function verificarRespuesta() {
+            const respuestaInput = document.getElementById("respuestaInput").value.trim();
+            const checkmark = document.querySelector(".checkmark");
+            const error = document.querySelector(".error");
+
+            if (respuestaInput.toLowerCase() === preguntas[preguntaActual].respuesta.toLowerCase()) {
+                checkmark.style.display = "inline";
+                setTimeout(() => {
+                    checkmark.style.display = "none";
+                    preguntaActual++;
+                    respuestasCorrectas++;
+                    erroresConsecutivos = 0;
+                    if (preguntaActual < preguntas.length) {
+                        mostrarSiguientePregunta();
+                    } else {
+                        mostrarResultadoFinal();
+                    }
+                }, 500);
+            } else {
+                error.style.display = "inline";
+                setTimeout(() => {
+                    error.style.display = "none";
+                    respuestasIncorrectas++;
+                    erroresConsecutivos++;
+                    if (erroresConsecutivos >= maxErroresConsecutivos) {
+                        saltarPregunta();
+                    }
+                }, 500);
+            }
+        }
+
+        function saltarPregunta() {
+            preguntaActual++;
+            erroresConsecutivos = 0;
+            if (preguntaActual < preguntas.length) {
+                mostrarSiguientePregunta();
+            } else {
+                mostrarResultadoFinal();
+            }
+        }
+
+        function mostrarSiguientePregunta() {
+            document.getElementById("question").textContent = preguntas[preguntaActual].pregunta;
+            document.getElementById("respuestaInput").value = "";
+        }
+
+        function mostrarResultadoFinal() {
+            const container = document.querySelector(".container");
+            container.innerHTML = `
+                <h1>¡Has terminado!</h1>
+                <p>Respuestas correctas: ${respuestasCorrectas}</p>
+                <p>Respuestas incorrectas: ${respuestasIncorrectas}</p>
+                <button onclick="location.reload()">Volver a jugar</button>
+            `;
+        }
+
+        // Iniciar con la primera pregunta
+        mostrarSiguientePregunta();
+    </script>
+</body>
+</html>
